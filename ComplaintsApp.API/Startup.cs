@@ -33,8 +33,12 @@ namespace ComplaintsApp.API
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
 
+            services.AddScoped<IComplaintService, ComplaintService>();
+            services.AddScoped<IComplaintRepoistory, ComplaintRepoistory>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+                .AddJwtBearer(options =>
+                {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
@@ -54,8 +58,12 @@ namespace ComplaintsApp.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                // We can implement Global Exception Handler here.
+            }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

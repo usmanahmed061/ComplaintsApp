@@ -9,7 +9,7 @@ namespace ComplaintsApp.API.Data
         public User Login(string username, string password)
         {
             var user = new User {
-                Id = new Guid(),
+                Id = Guid.NewGuid(),
                 Username = "j.doe",
                 Name = "John Doe",
                 Email = "jd@mail.com",

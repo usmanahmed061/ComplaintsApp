@@ -18,22 +18,13 @@ namespace ComplaintsApp.API.Controllers
         [HttpPost("login")]
         public IActionResult Login(UserForLoginDto userForLoginDto)
         {
-            if (ModelState.IsValid)
-            {
-                var returnObject = _auth.Login(userForLoginDto);
+            var returnObject = _auth.Login(userForLoginDto);
 
-                if (returnObject == null)
-                    return Unauthorized();
+            if (returnObject == null)
+                return Unauthorized();
 
-                return
-                 Ok(returnObject);
-            }
-            else
-            {
-                return BadRequest("Something went wrong.");
-            }
-
-
+            return
+             Ok(returnObject);
         }
     }
 }
